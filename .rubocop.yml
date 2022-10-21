@@ -1,0 +1,26 @@
+require:
+  - rubocop-rspec
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false
+
+Style/ClassVars:
+  Enabled: false
+
+Metrics/MethodLength:
+  Max: 20
+
+OptionalBooleanParameter:
+  Enabled: false
+
+RSpec/BlockLength:
+  Max: 20
+
+RSpec/DescribeClass:
+  Enabled: false
+
+RSpec/NestedGroups:
+  Max: 5
