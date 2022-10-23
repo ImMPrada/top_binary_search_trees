@@ -4,7 +4,7 @@ module Tree
   class BST
     LEFT_SIDE = :left
     RIGHT_SIDE = :right
-    BASIC_ARR_SIZE = (2..3)
+    BASIC_ARR_SIZE_LIMITS = (2..3)
 
     attr_reader :root
 
@@ -22,7 +22,7 @@ module Tree
     private
 
     def build_tree_helper(current_array)
-      return build_basic_node(current_array) if BASIC_ARR_SIZE.include?(current_array.length)
+      return build_basic_node(current_array) if BASIC_ARR_SIZE_LIMITS.include?(current_array.length)
 
       current_root = current_array[current_array.length / 2]
 
