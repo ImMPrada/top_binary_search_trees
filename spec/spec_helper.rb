@@ -3,6 +3,7 @@ require 'simplecov-lcov'
 
 require 'byebug'
 require './lib/tree/node'
+require './lib/tree/bst'
 
 SimpleCov::Formatter::LcovFormatter.config.report_with_single_file = true
 SimpleCov::Formatter::LcovFormatter.config do |c|
