@@ -19,7 +19,21 @@ module Tree
       @root = build_tree_helper(@sorted_arr)
     end
 
+    def find(value)
+      find_helper(@root, value)
+    end
+
     private
+
+    def find_helper(current_node, value)
+      return if current_node.nil?
+
+      return current_node if current_node.data == value
+
+      return find_helper(current_node.left_child, value) if value < current_node.data
+
+      find_helper(current_node.right_child, value)
+    end
 
     def build_tree_helper(current_array)
       return build_basic_node(current_array) if BASIC_ARR_SIZE_LIMITS.include?(current_array.length)
