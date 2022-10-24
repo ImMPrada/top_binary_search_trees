@@ -1,7 +1,7 @@
 require './spec/spec_helper'
 
 RSpec.describe Tree::BST do
-  let(:test_array) { [1, 7, 4, 23, 8, 9, 3, 7, 3, 8, 6, 2, 5] }
+  let(:test_array) { [1, 6435, 4, 324, 6, 7, 8, 9, 23, 67, 5, 3, 6, 8, 7] }
   let(:bst) { described_class.new(test_array) }
 
   describe '#initialize' do
@@ -22,7 +22,7 @@ RSpec.describe Tree::BST do
     end
 
     it 'builds assigns the root node to the tree' do
-      expect(bst.root.data).to eq(5)
+      expect(bst.root.data).not_to be_nil
     end
 
     describe 'evaluate data stored at each side of the root' do
@@ -76,7 +76,7 @@ RSpec.describe Tree::BST do
 
     describe 'when the value is present in the tree' do
       describe 'when the node to delete has no children (CASE_1)' do
-        let(:a_value_in_a_node_no_children) { 23 }
+        let(:a_value_in_a_node_no_children) { 6435 }
 
         it 'returns the parent node of the deleted node' do
           path_to_tested_value = bst.find_path_to(a_value_in_a_node_no_children)
