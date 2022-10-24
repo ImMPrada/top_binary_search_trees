@@ -1,5 +1,4 @@
 require_relative 'node'
-require_relative 'fake_queue'
 
 module Tree
   class BST
