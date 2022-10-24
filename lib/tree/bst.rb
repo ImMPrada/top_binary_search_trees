@@ -1,4 +1,5 @@
 require_relative 'node'
+require_relative 'fake_queue'
 
 module Tree
   class BST
@@ -11,6 +12,7 @@ module Tree
     def initialize(arr)
       @sorted_arr = arr.sort.uniq
       @root = nil
+      @path = FakeQueue.new
     end
 
     def build_tree
@@ -19,27 +21,23 @@ module Tree
       @root = build_tree_helper(@sorted_arr)
     end
 
-    def find(value)
-      find_helper(@root, value)
-    end
+    def find_path_to(value)
+      path_to_value_or_to_last_node = build_path(@root, value)
 
-    def delete(value)
-      node_to_delete = find(value)
-      return if node_to_delete.nil?
+      return nil unless path_to_value_or_to_last_node.last.data == value
 
-      delete_node(node_to_delete)
+      path_to_value_or_to_last_node.last
     end
 
     private
 
-    def find_helper(current_node, value)
-      return if current_node.nil?
+    def build_path(current_node, value)
+      path_to_value = [current_node]
 
-      return current_node if current_node.data == value
-
-      return find_helper(current_node.left_child, value) if value < current_node.data
-
-      find_helper(current_node.right_child, value)
+      until current_node.nil? || current_node.data == value
+        current_node = value < current_node.data ? current_node.left_child : current_node.right_child
+        path_to_value << current_node
+      end
     end
 
     def build_tree_helper(current_array)
