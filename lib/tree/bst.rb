@@ -43,6 +43,8 @@ module Tree
         delete_node_with_no_children(path_to_node)
       when CASE_2
         delete_node_with_one_child(path_to_node)
+      when CASE_3
+        delete_node_with_two_children(path_to_node)
       end
     end
 
@@ -64,6 +66,43 @@ module Tree
       prev_node.right_child = current_node.right_child if prev_node.right_child == current_node
 
       prev_node
+    end
+
+    def delete_node_with_two_children(path_to_node)
+      current_node = path_to_node.last
+      prev_node = path_to_node[-2]
+
+      rebuild_prev_node(current_node, prev_node, find_deep_min_node(current_node))
+    end
+
+    def find_deep_min_node(current_node)
+      path_to_deep_min = find_deep_min_path_from(current_node.right_child)
+      deep_min_node = path_to_deep_min.last
+      prev_deep_min_node = path_to_deep_min[-2] if path_to_deep_min.length > 1
+
+      prev_deep_min_node.left_child = deep_min_node.right_child if prev_deep_min_node
+
+      deep_min_node.right_child = current_node.right_child if deep_min_node != current_node.right_child
+
+      deep_min_node
+    end
+
+    def rebuild_prev_node(current_node, prev_node, deep_min_node)
+      prev_node.left_child = deep_min_node if prev_node.left_child == current_node
+      prev_node.right_child = deep_min_node if prev_node.right_child == current_node
+
+      prev_node
+    end
+
+    def find_deep_min_path_from(node)
+      path_til_node = []
+
+      until node.nil?
+        path_til_node << node
+        node = node.left_child
+      end
+
+      path_til_node
     end
 
     def build_path(current_node, value)
@@ -91,13 +130,13 @@ module Tree
 
     def build_basic_node(current_array)
       return Node.new(current_array[0]) if one_element_array?(current_array)
-      return Node.new(current_array[0], nil, Node.new(current_array[1])) if two_elements_array?(current_array)
+      return Node.new(current_array[1], Node.new(current_array[0], nil)) if two_elements_array?(current_array)
 
       Node.new(current_array[1], Node.new(current_array[0]), Node.new(current_array[2]))
     end
 
     def one_element_array?(current_array)
-      current_array.length == 3
+      current_array.length == 1
     end
 
     def two_elements_array?(current_array)
