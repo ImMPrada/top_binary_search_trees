@@ -13,11 +13,13 @@ module Tree
 
     def children_case
       case array_of_children
-      when [nil, nil]
+      in [nil, nil]
         :no_child
-      when [nil, _], [_, nil]
+      in [nil, _]
         :one_child
-      when [_, _]
+      in [_, nil]
+        :one_child
+      in [_, _]
         :two_children
       end
     end
