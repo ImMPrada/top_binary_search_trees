@@ -1,7 +1,7 @@
 require './spec/spec_helper'
 
 RSpec.describe Tree::BST do
-  let(:test_array) { [1, 6435, 4, 324, 6, 7, 8, 9, 23, 67, 5, 3, 6, 8, 7] }
+  let(:test_array) { [1, 6435, 324, 4, 6, 7, 8, 9, 23, 67, 5, 3, 6, 8, 7] }
   let(:bst) { described_class.new(test_array) }
 
   describe '#initialize' do
@@ -121,6 +121,17 @@ RSpec.describe Tree::BST do
           after_deleting = prev_node.linked_to?(new_node_linked_to_prev_node)
 
           expect(before_deleting && after_deleting).to be(true)
+        end
+      end
+
+      describe 'when the node to delete has two children (CASE_3)' do
+        let(:a_value_in_a_node_two_children) { 23 }
+
+        it 'returns the parent node of the deleted node' do
+          path_to_tested_value = bst.find_path_to(a_value_in_a_node_two_children)
+          prev_node = path_to_tested_value[-2]
+
+          expect(bst.delete(a_value_in_a_node_two_children)).to eq(prev_node)
         end
       end
     end
