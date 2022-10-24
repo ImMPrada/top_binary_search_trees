@@ -1,5 +1,6 @@
 require_relative 'node'
 require_relative 'fake_queue'
+require 'byebug'
 
 module Tree
   class BST
@@ -24,9 +25,9 @@ module Tree
     def find_path_to(value)
       path_to_value_or_to_last_node = build_path(@root, value)
 
-      return nil unless path_to_value_or_to_last_node.last.data == value
+      return nil unless path_to_value_or_to_last_node.last
 
-      path_to_value_or_to_last_node.last
+      path_to_value_or_to_last_node
     end
 
     def delete(value)
@@ -75,6 +76,8 @@ module Tree
         current_node = value < current_node.data ? current_node.left_child : current_node.right_child
         path_to_value << current_node
       end
+
+      path_to_value
     end
 
     def build_tree_helper(current_array)
