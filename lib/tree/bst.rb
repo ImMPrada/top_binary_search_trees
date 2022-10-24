@@ -23,6 +23,13 @@ module Tree
       find_helper(@root, value)
     end
 
+    def delete(value)
+      node_to_delete = find(value)
+      return if node_to_delete.nil?
+
+      delete_node(node_to_delete)
+    end
+
     private
 
     def find_helper(current_node, value)
