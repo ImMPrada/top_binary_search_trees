@@ -15,9 +15,7 @@ RSpec.describe Tree::BST do
   end
 
   describe '#build_tree' do
-    before do
-      bst.build_tree
-    end
+    before { bst.build_tree }
 
     it 'stores a Node element at the root of the tree' do
       expect(bst.root.class).to eq(Tree::Node)
