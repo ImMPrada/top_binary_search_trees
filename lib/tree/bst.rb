@@ -4,7 +4,7 @@ module Tree
   class BST
     LEFT_SIDE = :left
     RIGHT_SIDE = :right
-    BASIC_ARR_SIZE_LIMITS = (2..3)
+    BASIC_ARR_SIZE_LIMITS = (1..3)
 
     attr_reader :root
 
@@ -38,7 +38,7 @@ module Tree
     def build_tree_helper(current_array)
       return build_basic_node(current_array) if BASIC_ARR_SIZE_LIMITS.include?(current_array.length)
 
-      current_root = current_array[current_array.length / 2]
+      current_root = current_array[calculate_spliter(current_array)]
 
       Node.new(
         current_root,
@@ -48,9 +48,14 @@ module Tree
     end
 
     def build_basic_node(current_array)
+      return Node.new(current_array[0]) if one_element_array?(current_array)
       return Node.new(current_array[0], nil, Node.new(current_array[1])) if two_elements_array?(current_array)
 
       Node.new(current_array[1], Node.new(current_array[0]), Node.new(current_array[2]))
+    end
+
+    def one_element_array?(current_array)
+      current_array.length == 3
     end
 
     def two_elements_array?(current_array)
@@ -58,10 +63,14 @@ module Tree
     end
 
     def split_array(current_array, side)
-      spliter = current_array.length / 2
+      spliter = calculate_spliter(current_array)
 
       return current_array[0..spliter - 1] if side == LEFT_SIDE
       return current_array[spliter + 1..] if side == RIGHT_SIDE
+    end
+
+    def calculate_spliter(current_array)
+      (current_array.length - 1) / 2
     end
   end
 end
