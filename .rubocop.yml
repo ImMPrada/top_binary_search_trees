@@ -19,6 +19,9 @@ RSpec/ExampleLength:
 Metrics/MethodLength:
   Max: 20
 
+Metrics/ClassLength:
+  Max: 200
+
 OptionalBooleanParameter:
   Enabled: false
 
