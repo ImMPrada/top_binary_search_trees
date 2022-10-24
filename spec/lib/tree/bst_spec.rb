@@ -73,5 +73,30 @@ RSpec.describe Tree::BST do
         expect(bst.delete(a_value_not_in_the_test_array)).to be_nil
       end
     end
+
+    describe 'when the value is present in the tree' do
+      describe 'when the node to delete has no children (CASE_1)' do
+        let(:a_value_in_a_node_no_children) { 23 }
+
+        it 'returns the parent node of the deleted node' do
+          path_to_tested_value = bst.find_path_to(a_value_in_a_node_no_children)
+          prev_node = path_to_tested_value[-2]
+
+          expect(bst.delete(a_value_in_a_node_no_children)).to eq(prev_node)
+        end
+
+        it 'unlinks the node to previus node' do
+          path_to_tested_value = bst.find_path_to(a_value_in_a_node_no_children)
+          node_to_delete = path_to_tested_value.last
+          prev_node = path_to_tested_value[-2]
+
+          before_deleting = prev_node.linked_to?(node_to_delete)
+          bst.delete(a_value_in_a_node_no_children)
+          after_deleting = !prev_node.linked_to?(node_to_delete)
+
+          expect(before_deleting && after_deleting).to be(true)
+        end
+      end
+    end
   end
 end
