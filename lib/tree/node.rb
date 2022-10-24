@@ -24,6 +24,10 @@ module Tree
       end
     end
 
+    def linked_to?(node)
+      array_of_children.any?(node)
+    end
+
     private
 
     def array_of_children
