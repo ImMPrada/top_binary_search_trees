@@ -10,6 +10,9 @@ Style/Documentation:
 Style/ClassVars:
   Enabled: false
 
+RSpec/ExampleLength:
+  Max: 10
+
 Metrics/MethodLength:
   Max: 20
 
