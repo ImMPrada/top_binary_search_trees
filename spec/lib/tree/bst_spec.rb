@@ -62,4 +62,16 @@ RSpec.describe Tree::BST do
       end
     end
   end
+
+  describe '#delete' do
+    let(:a_value_not_in_the_test_array) { 100 }
+
+    before { bst.build_tree }
+
+    describe 'when the value is not present in the tree' do
+      it 'returns nil' do
+        expect(bst.delete(a_value_not_in_the_test_array)).to be_nil
+      end
+    end
+  end
 end
