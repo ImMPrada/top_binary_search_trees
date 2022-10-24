@@ -1,6 +1,5 @@
 require_relative 'node'
 require_relative 'fake_queue'
-require 'byebug'
 
 module Tree
   class BST
@@ -33,10 +32,12 @@ module Tree
     def delete(value)
       path_to_value_or_to_last_node = build_path(@root, value)
 
-      return unless path_to_value_or_to_last_node.last.data == value
+      return unless path_to_value_or_to_last_node.last
 
       delete_node(path_to_value_or_to_last_node)
     end
+
+    private
 
     def delete_node(path_to_node)
       case path_to_node.last.children_case
@@ -46,8 +47,6 @@ module Tree
         delete_node_with_one_child(path_to_node)
       end
     end
-
-    private
 
     def delete_node_with_no_children(path_to_node)
       current_node = path_to_node.last
