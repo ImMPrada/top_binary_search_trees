@@ -29,7 +29,32 @@ module Tree
       path_to_value_or_to_last_node.last
     end
 
+    def delete(value)
+      path_to_value_or_to_last_node = build_path(@root, value)
+
+      return unless path_to_value_or_to_last_node.last.data == value
+
+      delete_node(path_to_value_or_to_last_node)
+    end
+
+    def delete_node(path_to_node)
+      case path_to_node.last.children_case
+      when CASE_1
+        delete_node_with_no_children(path_to_node)
+      end
+    end
+
     private
+
+    def delete_node_with_no_children(path_to_node)
+      current_node = path_to_node.last
+      prev_node = path_to_node[-2]
+
+      prev_node.left_child = nil if prev_node.left_child == current_node
+      prev_node.right_child = nil if prev_node.right_child == current_node
+
+      prev_node
+    end
 
     def build_path(current_node, value)
       path_to_value = [current_node]
