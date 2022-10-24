@@ -11,7 +11,6 @@ module Tree
     def initialize(arr)
       @sorted_arr = arr.sort.uniq
       @root = nil
-      @path = FakeQueue.new
     end
 
     def build_tree
