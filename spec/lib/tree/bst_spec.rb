@@ -36,25 +36,29 @@ RSpec.describe Tree::BST do
     end
   end
 
-  describe '#find' do
+  describe '#find_path_to' do
     let(:a_value_in_the_test_array) { test_array.sample }
     let(:a_value_not_in_the_test_array) { 100 }
 
     before { bst.build_tree }
 
     describe 'when the value is present in the tree' do
-      it 'returns a node' do
-        expect(bst.find(a_value_in_the_test_array).class).to eq(Tree::Node)
+      it 'returns an array' do
+        expect(bst.find_path_to(a_value_in_the_test_array).class).to eq(Array)
       end
 
-      it 'returns the node with the value' do
-        expect(bst.find(a_value_in_the_test_array).data).to eq(a_value_in_the_test_array)
+      it 'returns the node with searched value, at the end of the path' do
+        last_item = bst.find_path_to(a_value_in_the_test_array).last
+        class_of_last_item_is_node = last_item.instance_of?(Tree::Node)
+        value_of_last_item_is_the_searched_value = last_item.data == a_value_in_the_test_array
+
+        expect(class_of_last_item_is_node && value_of_last_item_is_the_searched_value).to be(true)
       end
     end
 
     describe 'when the value is not present in the tree' do
       it 'returns nil' do
-        expect(bst.find(a_value_not_in_the_test_array)).to be_nil
+        expect(bst.find_path_to(a_value_not_in_the_test_array)).to be_nil
       end
     end
   end
