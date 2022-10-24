@@ -41,6 +41,8 @@ module Tree
       case path_to_node.last.children_case
       when CASE_1
         delete_node_with_no_children(path_to_node)
+      when CASE_2
+        delete_node_with_one_child(path_to_node)
       end
     end
 
@@ -52,6 +54,16 @@ module Tree
 
       prev_node.left_child = nil if prev_node.left_child == current_node
       prev_node.right_child = nil if prev_node.right_child == current_node
+
+      prev_node
+    end
+
+    def delete_node_with_one_child(path_to_node)
+      current_node = path_to_node.last
+      prev_node = path_to_node[-2]
+
+      prev_node.left_child = current_node.left_child if prev_node.left_child == current_node
+      prev_node.right_child = current_node.right_child if prev_node.right_child == current_node
 
       prev_node
     end
