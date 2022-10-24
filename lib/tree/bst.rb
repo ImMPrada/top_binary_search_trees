@@ -1,4 +1,5 @@
 require_relative 'node'
+require_relative 'fake_queue'
 
 module Tree
   class BST
@@ -11,6 +12,7 @@ module Tree
     def initialize(arr)
       @sorted_arr = arr.sort.uniq
       @root = nil
+      @path = FakeQueue.new
     end
 
     def build_tree
@@ -19,27 +21,60 @@ module Tree
       @root = build_tree_helper(@sorted_arr)
     end
 
-    def find(value)
-      find_helper(@root, value)
+    def find_path_to(value)
+      path_to_value_or_to_last_node = build_path(@root, value)
+
+      return nil unless path_to_value_or_to_last_node.last.data == value
+
+      path_to_value_or_to_last_node.last
     end
 
     def delete(value)
-      node_to_delete = find(value)
-      return if node_to_delete.nil?
+      path_to_value_or_to_last_node = build_path(@root, value)
 
-      delete_node(node_to_delete)
+      return unless path_to_value_or_to_last_node.last.data == value
+
+      delete_node(path_to_value_or_to_last_node)
+    end
+
+    def delete_node(path_to_node)
+      case path_to_node.last.children_case
+      when CASE_1
+        delete_node_with_no_children(path_to_node)
+      when CASE_2
+        delete_node_with_one_child(path_to_node)
+      end
     end
 
     private
 
-    def find_helper(current_node, value)
-      return if current_node.nil?
+    def delete_node_with_no_children(path_to_node)
+      current_node = path_to_node.last
+      prev_node = path_to_node[-2]
 
-      return current_node if current_node.data == value
+      prev_node.left_child = nil if prev_node.left_child == current_node
+      prev_node.right_child = nil if prev_node.right_child == current_node
 
-      return find_helper(current_node.left_child, value) if value < current_node.data
+      prev_node
+    end
 
-      find_helper(current_node.right_child, value)
+    def delete_node_with_one_child(path_to_node)
+      current_node = path_to_node.last
+      prev_node = path_to_node[-2]
+
+      prev_node.left_child = current_node.left_child if prev_node.left_child == current_node
+      prev_node.right_child = current_node.right_child if prev_node.right_child == current_node
+
+      prev_node
+    end
+
+    def build_path(current_node, value)
+      path_to_value = [current_node]
+
+      until current_node.nil? || current_node.data == value
+        current_node = value < current_node.data ? current_node.left_child : current_node.right_child
+        path_to_value << current_node
+      end
     end
 
     def build_tree_helper(current_array)
