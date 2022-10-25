@@ -36,7 +36,21 @@ module Tree
       delete_node(path_to_value_or_to_last_node)
     end
 
+    def insert(value)
+      return unless @root
+      return unless find_path_to(value).nil?
+
+      insert_node(@root, value)
+    end
+
     private
+
+    def insert_node(node, value)
+      return node.left_child = Node.new(value) if value < node.data && node.left_child.nil?
+      return node.right_child = Node.new(value) if value > node.data && node.right_child.nil?
+
+      insert_node(value < node.data ? node.left_child : node.right_child, value)
+    end
 
     def delete_node(path_to_node)
       case path_to_node.last.children_case
