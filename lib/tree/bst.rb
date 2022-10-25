@@ -138,10 +138,10 @@ module Tree
     def build_tree_helper(current_array)
       return build_basic_node(current_array) if BASIC_ARR_SIZE_LIMITS.include?(current_array.length)
 
-      current_root = current_array[calculate_spliter(current_array)]
+      current_root_value = current_array[calculate_spliter(current_array)]
 
       Node.new(
-        current_root,
+        current_root_value,
         build_tree_helper(split_array(current_array, LEFT_SIDE)),
         build_tree_helper(split_array(current_array, RIGHT_SIDE))
       )
