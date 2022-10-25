@@ -43,6 +43,10 @@ module Tree
       insert_node(@root, value)
     end
 
+    def to_h
+      @root&.to_h
+    end
+
     private
 
     def insert_node(node, value)
