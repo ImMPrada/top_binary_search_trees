@@ -1,4 +1,5 @@
 require_relative 'node'
+require 'byebug'
 
 module Tree
   class BST
@@ -78,11 +79,11 @@ module Tree
     def find_deep_min_node(current_node)
       path_to_deep_min = find_deep_min_path_from(current_node.right_child)
       deep_min_node = path_to_deep_min.last
-      prev_deep_min_node = path_to_deep_min[-2] if path_to_deep_min.length > 1
 
-      prev_deep_min_node.left_child = deep_min_node.right_child if prev_deep_min_node
+      path_to_deep_min[-2].left_child = deep_min_node.right_child if path_to_deep_min.length > 1
 
       deep_min_node.right_child = current_node.right_child if deep_min_node != current_node.right_child
+      deep_min_node.left_child = current_node.left_child
 
       deep_min_node
     end
