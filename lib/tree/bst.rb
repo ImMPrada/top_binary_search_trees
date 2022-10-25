@@ -1,4 +1,5 @@
 require_relative 'node'
+require_relative 'fake_queue'
 require 'byebug'
 
 module Tree
@@ -50,6 +51,34 @@ module Tree
       return unless find_path_to(value).nil?
 
       insert_node(@root, value)
+    end
+
+    # tree.level_order do |node|
+    #   puts(
+    #     "#{node.object_id} data: #{node.data}\n
+    #      ++ L--> #{node.left_child ? node.left_child.object_id : 'NO'}\n
+    #       ++++ data: #{node.left_child ? node.left_child.data : '*'}\n
+    #      ++ R--> #{node.right_child ? node.right_child.object_id : 'NO'}\n
+    #       ++++ data: #{node.right_child ? node.right_child.data : '*'}\n"
+    #   )
+    # end
+
+    def level_order
+      return if @root.nil?
+
+      queue = FakeQueue.new(@root)
+      level_order = []
+
+      until queue.empty?
+        current_node = queue.remove
+
+        level_order << current_node
+        queue.add(current_node.left_child) if current_node.left_child
+        queue.add(current_node.right_child) if current_node.right_child
+        yield(current_node) if block_given?
+      end
+
+      return level_order unless block_given?
     end
 
     def to_h
