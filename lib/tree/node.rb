@@ -28,6 +28,14 @@ module Tree
       array_of_children.any?(node)
     end
 
+    def to_h
+      {
+        data: @data,
+        "left_child_for_#{@data}": @left_child&.to_hash,
+        "right_child_for_#{@data}": @right_child&.to_hash
+      }
+    end
+
     private
 
     def array_of_children
