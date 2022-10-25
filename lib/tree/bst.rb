@@ -20,6 +20,15 @@ module Tree
       @root = build_tree_helper(@sorted_arr)
     end
 
+    def find(value)
+      return if @root.nil?
+
+      path_to_value = find_path_to(value)
+      return unless path_to_value
+
+      path_to_value.last
+    end
+
     def find_path_to(value)
       path_to_value_or_to_last_node = build_path(@root, value)
 
