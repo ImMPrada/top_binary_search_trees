@@ -103,6 +103,38 @@ module Tree
       response unless block_given?
     end
 
+    # <left><root><right>
+    def inorder
+      return if @root.nil?
+
+      response = []
+      current_node = @root
+      stack = FakeStack.new(current_node)
+      go_trough_left_side = true
+
+      until stack.empty?
+        if current_node.left_child.nil? || !go_trough_left_side
+
+          response << current_node
+          yield(current_node) if block_given?
+
+          if current_node.right_child
+            go_trough_left_side = true
+            current_node = current_node.right_child
+          else
+            go_trough_left_side = false
+            current_node = stack.pop
+          end
+        elsif go_trough_left_side
+          stack.add(current_node)
+          puts " stack: #{stack.data.map(&:data)}"
+          current_node = current_node.left_child
+        end
+      end
+
+      response unless block_given?
+    end
+
     def to_h
       @root&.to_h
     end
