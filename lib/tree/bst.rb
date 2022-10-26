@@ -1,5 +1,6 @@
 require_relative 'node'
 require_relative 'fake_queue'
+require_relative 'fake_stack'
 require 'byebug'
 
 module Tree
@@ -79,6 +80,27 @@ module Tree
       end
 
       return level_order unless block_given?
+    end
+
+    # tree.preorder { |node| puts "#{node.object_id} data: #{node.data}\n" }
+    # <root><left><right>
+    def preorder
+      return if @root.nil?
+
+      response = []
+      stack = FakeStack.new(@root.right_child)
+      current_node = @root
+
+      until stack.empty?
+        response << current_node
+
+        stack.add(current_node.right_child) if current_node.right_child
+        yield(current_node) if block_given?
+
+        current_node = response.last.left_child || stack.pop
+      end
+
+      response unless block_given?
     end
 
     def to_h
