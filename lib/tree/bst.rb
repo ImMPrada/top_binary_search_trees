@@ -127,8 +127,60 @@ module Tree
           end
         elsif go_trough_left_side
           stack.add(current_node)
-          puts " stack: #{stack.data.map(&:data)}"
           current_node = current_node.left_child
+        end
+      end
+
+      response unless block_given?
+    end
+
+    # <left><right><root>
+    def postorder
+      return if @root.nil?
+
+      response = []
+      current_node = @root
+      stack = FakeStack.new
+      go_trough = LEFT_SIDE
+      stop = false
+      visits_to_root = 0
+
+      until stop
+        visits_to_root += 1 if stack.empty?
+        stop = true if visits_to_root == 3
+
+        if go_trough == LEFT_SIDE
+          if current_node.left_child
+            stack.add(current_node)
+            current_node = current_node.left_child
+
+            next
+          else
+            go_trough = RIGHT_SIDE
+          end
+        end
+
+        if go_trough == RIGHT_SIDE
+          if current_node.right_child
+            if current_node.right_child == response.last
+              response << current_node
+              yield(current_node) if block_given?
+
+              current_node = stack.pop
+              go_trough = RIGHT_SIDE
+            else
+              stack.add(current_node)
+              current_node = current_node.right_child
+              go_trough = LEFT_SIDE
+            end
+
+            next
+          else
+            response << current_node
+            yield(current_node) if block_given?
+
+            current_node = stack.pop
+          end
         end
       end
 
