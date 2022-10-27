@@ -187,11 +187,23 @@ module Tree
       response unless block_given?
     end
 
+    def height(node)
+      return if node.nil?
+
+      height_helper(node)
+    end
+
     def to_h
       @root&.to_h
     end
 
     private
+
+    def height_helper(node)
+      return 0 if node.children.empty?
+
+      1 + node.children.map(&method(:height_helper)).max
+    end
 
     def insert_node(node, value)
       return node.left_child = Node.new(value) if value < node.data && node.left_child.nil?

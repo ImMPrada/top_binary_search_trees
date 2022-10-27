@@ -36,6 +36,10 @@ module Tree
       }
     end
 
+    def children
+      array_of_children.select(&:itself)
+    end
+
     private
 
     def array_of_children
