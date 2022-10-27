@@ -201,6 +201,15 @@ module Tree
       find_path_to(value).size - 1
     end
 
+    def balanced?
+      return false if @root.nil?
+
+      left_height = height(@root.left_child) || 0
+      right_height = height(@root.right_child) || 0
+
+      (left_height - right_height).abs <= 1
+    end
+
     def to_h
       @root&.to_h
     end
