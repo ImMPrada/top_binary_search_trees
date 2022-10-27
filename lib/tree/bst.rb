@@ -210,6 +210,13 @@ module Tree
       (left_height - right_height).abs <= 1
     end
 
+    def rebalance
+      return if @root.nil?
+
+      @sorted_arr = inorder.map(&:data)
+      build_tree
+    end
+
     def to_h
       @root&.to_h
     end
