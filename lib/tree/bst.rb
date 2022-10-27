@@ -193,6 +193,14 @@ module Tree
       height_helper(node)
     end
 
+    def depth(node)
+      return if node.nil?
+      return 0 if node == @root
+
+      value = node.data
+      find_path_to(value).size - 1
+    end
+
     def to_h
       @root&.to_h
     end
