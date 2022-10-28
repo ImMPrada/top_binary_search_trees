@@ -25,6 +25,6 @@ The following table has the methods you will need to implement along with their 
 
 
 * Symbols:
-  ✓ runs ok
-  ⚠️ It fails
-  ✕ Is not done
+  - ✓ runs ok
+  - ✕ It fails
+  - ⚠️ Is not done
