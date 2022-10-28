@@ -80,3 +80,26 @@ The following table has the methods you will need to implement along with their 
   - ✓ tested: ok
   - ✕ tested:  fails
   - ⚠️ Is not done
+
+
+### Tree::FakeStack
+
+This is an emulate stack, is fake because in the back is working with an array: @data
+#### Methods
+
+The following table has the methods you will need to implement along with their associated specs, as outlined in the project instructions.
+
+| Method | Spec File | Spec* | Notes |
+| --- | --- | ---|--- |
+| `Tree::FakeStack.new` | spec/lib/tree/fake_stack_spec.rb | ⚠️ | parameters: fist_data |
+| `Tree::FakeStack#add` | spec/lib/tree/fake_stack_spec.rb | ⚠️ | parameters: value (mandatory)<br><br> push value to @data<br> returns @data |
+| `Tree::FakeStack##pop` | spec/lib/tree/fake_stack_spec.rb | ⚠️ | removes the last element of @data<br><br> returns nil if @data is empty<br> returns removed value|
+| `Tree::FakeStack#empty?` | spec/lib/tree/fake_stack_spec.rb | ⚠️ | returns @data.empty? |
+| `Tree::FakeStack##size` | spec/lib/tree/fake_stack_spec.rb | ⚠️ | returns @data.size |
+| `Tree::FakeStack#to_s` | spec/lib/tree/fake_stack_spec.rb | ⚠️ | returns an array `stack: #{@data}` |
+
+
+*Symbols:
+  - ✓ tested: ok
+  - ✕ tested:  fails
+  - ⚠️ Is not done
