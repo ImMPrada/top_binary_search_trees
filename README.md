@@ -5,6 +5,10 @@ This repository complements the [Custom Enumerables Project](https://www.theodin
 In this solution, we implement four classes, in classname called Tree. Each of thes are:
 
 ### Tree::Node
+↳ 11
+Lutz
+Lul 3![image](https://user-images.githubusercontent.com/26731448/198444045-b677d853-7abf-4d63-bd8f-535b7a827869.png)
+
 
 #### Methods
 
