@@ -54,16 +54,6 @@ module Tree
       insert_node(@root, value)
     end
 
-    # tree.level_order do |node|
-    #   puts(
-    #     "#{node.object_id} data: #{node.data}\n
-    #      ++ L--> #{node.left_child ? node.left_child.object_id : 'NO'}\n
-    #       ++++ data: #{node.left_child ? node.left_child.data : '*'}\n
-    #      ++ R--> #{node.right_child ? node.right_child.object_id : 'NO'}\n
-    #       ++++ data: #{node.right_child ? node.right_child.data : '*'}\n"
-    #   )
-    # end
-
     def level_order
       return if @root.nil?
 
@@ -82,8 +72,6 @@ module Tree
       return level_order unless block_given?
     end
 
-    # tree.preorder { |node| puts "#{node.object_id} data: #{node.data}\n" }
-    # <root><left><right>
     def preorder
       return if @root.nil?
 
@@ -103,7 +91,6 @@ module Tree
       response unless block_given?
     end
 
-    # <left><root><right>
     def inorder
       return if @root.nil?
 
@@ -134,7 +121,6 @@ module Tree
       response unless block_given?
     end
 
-    # <left><right><root>
     def postorder
       return if @root.nil?
 
