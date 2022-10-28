@@ -4,12 +4,32 @@ This repository complements the [Custom Enumerables Project](https://www.theodin
 
 In this solution, we implement four classes, in classname called Tree. Each of thes are:
 
+### Tree::BST
+
+This is the tree, a Binary Search Tree. It has a root node; the root node has a reader attr_accessor. 
+This class has a list of methods:
+#### Methods
+
+The following table has the methods you will need to implement along with their associated specs, as outlined in the project instructions.
+
+| Method | Spec File | Spec* | Notes |
+| --- | --- | ---|--- |
+| `Tree::BST.new` | spec/lib/tree/bst_spec.rb | ✓ | parameters: arr (mandatory) |
+| `Tree::BST#build_tree` | spec/lib/tree/bst_spec.rb | ✓ | returns nil if @sorted_arr is empty<br> build the tree, and returns the root node |
+| `Tree::BST#find` | spec/lib/tree/bst_spec.rb | ✓ | parameters: value (mandatory)<br><br> returns nil if the root node is nil<br> returns nil if value is not found<br> returns the node with the value at data field |
+
+
+*Symbols:
+  - ✓ runs ok
+  - ✕ It fails
+  - ⚠️ Is not done
+
+
 ### Tree::Node
 
 Each of nodes on the tree, green at the image:
 
 <img width="445" alt="image" src="https://user-images.githubusercontent.com/26731448/198444446-0336b25d-71bb-4acb-8f5a-3dd5e322fdad.png">
-
 
 #### Methods
 
