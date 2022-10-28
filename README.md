@@ -13,7 +13,3 @@ The following table has the methods you will need to implement along with their 
 | `Tree::Nod#linked_to?` | lib/tree/node.rb | ✅ | parameters: node (mandatory)<br> returns if node is linked to the node passed as parameter |
 | `Tree::Nod#to_h` | lib/tree/node.rb | ✅ | returns a hash of the node with it's children |
 | `Tree::Nod#children` | lib/tree/node.rb | ✅ | returns an array of node's children<br> `[ left_child(if not nil), right_child(if not nil) ]` |
-| `Enumerable#my_none?`           | spec/my_none_spec.rb            | Done                                 |                                |
-| `Enumerable#my_count`           | spec/my_count_spec.rb           | Done                                 |                                |
-| `Enumerable#my_map`             | spec/my_map_spec.rb             | Done                                 |                                |
-| `Enumerable#my_inject`          | spec/my_inject_spec.rb          | Done                                 |                                |
