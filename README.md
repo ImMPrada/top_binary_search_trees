@@ -14,11 +14,19 @@ The following table has the methods you will need to implement along with their 
 
 | Method | Spec File | Spec* | Notes |
 | --- | --- | ---|--- |
-| `Tree::BST.new` | spec/lib/tree/bst_spec.rb | ✓ | parameters: arr (mandatory) |
-| `Tree::BST#build_tree` | spec/lib/tree/bst_spec.rb | ✓ | returns nil if @sorted_arr is empty<br> build the tree, and returns the root node |
-| `Tree::BST#find` | spec/lib/tree/bst_spec.rb | ✓ | parameters: value (mandatory)<br><br> returns nil if the root node is nil<br> returns nil if value is not found<br> returns the node with the value at data field |
-| `Tree::BST#delete` | spec/lib/tree/bst_spec.rb | ✓ | parameters: value (mandatory)<br><br> returns nil if value is not found<br> deletes the node with value at data, and returns deleted node |
-| `Tree::BST#insert` | spec/lib/tree/bst_spec.rb | ✓ | parameters: value (mandatory)<br><br> returns nil if the root is nil<br> returns nil if value already exists in the tree<br> adds a node with value at data, at the tree, and returns inserted node |
+| `Tree::BST.new` | spec/lib/tree/bst_spec.rb | ⚠️ | parameters: arr (mandatory) |
+| `Tree::BST#build_tree` | spec/lib/tree/bst_spec.rb | ⚠️ | returns nil if @sorted_arr is empty<br> build the tree, and returns the root node |
+| `Tree::BST#find` | spec/lib/tree/bst_spec.rb | ⚠️ | parameters: value (mandatory)<br><br> returns nil if the root node is nil<br> returns nil if value is not found<br> returns the node with the value at data field |
+| `Tree::BST#delete` | spec/lib/tree/bst_spec.rb | ⚠️ | parameters: value (mandatory)<br><br> returns nil if value is not found<br> deletes the node with value at data, and returns deleted node |
+| `Tree::BST#insert` | spec/lib/tree/bst_spec.rb | ⚠️ | parameters: value (mandatory)<br><br> returns nil if the root is nil<br> returns nil if value already exists in the tree<br> adds a node with value at data, at the tree, and returns inserted node |
+| `Tree::BST#level_order` | spec/lib/tree/bst_spec.rb | ⚠️ | breadth-first<br><br> returns nil if the root is nil<br> accepts a block<br> it traverse the tree in level order<br><br> if a block is passed, it yields each node to the block<br> if a block is not passed, it returns an array with each node |
+| `Tree::BST#preorder` | spec/lib/tree/bst_spec.rb | ⚠️ | depth-first<br><br> returns nil if the root is nil<br> accepts a block<br> it traverse the tree in `<root><left><right>` order<br><br> if a block is passed, it yields each node to the block<br> if a block is not passed, it returns an array with each node |
+| `Tree::BST#inorder` | spec/lib/tree/bst_spec.rb | ⚠️ | depth-first<br><br> returns nil if the root is nil<br> accepts a block<br> it traverse the tree in `<left><root><right>` order<br><br> if a block is passed, it yields each node to the block<br> if a block is not passed, it returns an array with each node |
+| `Tree::BST#postorder` | spec/lib/tree/bst_spec.rb | ⚠️ | depth-first<br><br> returns nil if the root is nil<br> accepts a block<br> it traverse the tree in `<left><right><root>` order<br><br> if a block is passed, it yields each node to the block<br> if a block is not passed, it returns an array with each node |
+| `Tree::BST#height` | spec/lib/tree/bst_spec.rb | ⚠️ | parameters: value (node)<br><br> returns nil if node nil<br> it returns the height of the passed node<br><br> "Height is defined as the number of edges in longest path from a given node to a leaf node." - [TOP](https://www.theodinproject.com/)|
+| `Tree::BST#depth` | spec/lib/tree/bst_spec.rb | ⚠️ | parameters: value (node)<br><br> returns nil if node nil<br> it returns the depth of the passed node<br><br> "Depth is defined as the number of edges in path from a given node to the tree’s root node." - [TOP](https://www.theodinproject.com/)|
+| `Tree::BST#balanced?` | spec/lib/tree/bst_spec.rb | ⚠️ | returns `false` if the root node is nil<br> it returns `true` if the tree is balanced, `false` otherwhise<br><br> "A balanced tree is one where the difference between heights of left subtree and right subtree of every node is not more than 1." - [TOP](https://www.theodinproject.com/)|
+| `Tree::BST#rebalance` | spec/lib/tree/bst_spec.rb | ⚠️ | returns `false` if the root node is nil<br> it rebuild the tree, and return the root of the rebuilded tree<br><br> It use order depth-first traversal to give new array to the tree, and based on it, rebuild the tree and upgrade the root |
 
 
 *Symbols:
