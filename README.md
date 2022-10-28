@@ -24,7 +24,7 @@ The following table has the methods you will need to implement along with their 
 | `Tree::Nod#children` | spec/lib/tree/node_spec.rb | ✕ | returns an array of node's children<br> `[ left_child(if not nil), right_child(if not nil) ]` |
 
 
-^*Symbols:
+*Symbols:
   - ✓ runs ok
   - ✕ It fails
   - ⚠️ Is not done
