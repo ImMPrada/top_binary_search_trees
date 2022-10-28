@@ -2,7 +2,11 @@
 
 This repository complements the [Custom Enumerables Project](https://www.theodinproject.com/lessons/ruby-binary-search-trees) in the Ruby Course for The Odin Project. You’ll build a balanced BST in this assignment. Do not use duplicate values because they make it more complicated and result in trees that are much harder to balance. Therefore, be sure to always remove duplicate values or check for an existing value before inserting.
 
-### Methods
+In this solution, we implement four classes, in classname called Tree. Each of thes are:
+
+### Tree::Node
+
+#### Methods
 
 The following table has the methods you will need to implement along with their associated specs, as outlined in the project instructions.
 
