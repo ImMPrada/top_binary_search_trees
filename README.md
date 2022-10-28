@@ -7,7 +7,7 @@ This repository complements the [Custom Enumerables Project](https://www.theodin
 The following table has the methods you will need to implement along with their associated specs, as outlined in the project instructions.
 
 | Method                          | Spec File                       | Spec                                 | Notes                          |
-| ------------------------------- | ------------------------------- | --------------------------------------------------------------------- |
+| ------------------------------- | ------------------------------- | -------------------------------------|------------------------------- |
 | `Tree::Node.new`                | lib/tree/node.rb.               | Done                                 | parameters: data (mandatory),  |
 |.                                |                                 |                                      | left_child, right_child        |
 | `Enumerable#my_each_with_index` | spec/my_each_with_index_spec.rb | Done                                 |                                |
