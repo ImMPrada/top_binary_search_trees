@@ -1,3 +1,5 @@
+<img width="226" alt="image" src="https://user-images.githubusercontent.com/26731448/188519846-a027234f-8008-40cb-8b22-87a233650de0.png">
+
 # binary search tree
 
 This repository complements the [Custom Enumerables Project](https://www.theodinproject.com/lessons/ruby-binary-search-trees) in the Ruby Course for The Odin Project. You’ll build a balanced BST in this assignment. Do not use duplicate values because they make it more complicated and result in trees that are much harder to balance. Therefore, be sure to always remove duplicate values or check for an existing value before inserting.
