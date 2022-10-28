@@ -47,14 +47,36 @@ The following table has the methods you will need to implement along with their 
 
 | Method | Spec File | Spec* | Notes |
 | --- | --- | ---|--- |
-| `Tree::Node.new` | spec/lib/tree/node_spec.rb | ✓ | parameters: data (mandatory), left_child, right_child |
+| `Tree::Node.new` | spec/lib/tree/node_spec.rb | ⚠️ | parameters: data (mandatory), left_child, right_child |
 | `Tree::Nod#children_case` | spec/lib/tree/node_spec.rb | ⚠️ | returns children case for node: `:no_child`, `:one_child` or `:two_children` |
-| `Tree::Nod#linked_to?` | spec/lib/tree/node_spec.rb | ✕ | parameters: node (mandatory)<br> returns if node is linked to the node passed as parameter |
-| `Tree::Nod#to_h` | spec/lib/tree/node_spec.rb | ✕ | returns a hash of the node with it's children |
-| `Tree::Nod#children` | spec/lib/tree/node_spec.rb | ✕ | returns an array of node's children<br> `[ left_child(if not nil), right_child(if not nil) ]` |
+| `Tree::Nod#linked_to?` | spec/lib/tree/node_spec.rb | ⚠️ | parameters: node (mandatory)<br> returns if node is linked to the node passed as parameter |
+| `Tree::Nod#to_h` | spec/lib/tree/node_spec.rb | ⚠️ | returns a hash of the node with it's children |
+| `Tree::Nod#children` | spec/lib/tree/node_spec.rb | ⚠️ | returns an array of node's children<br> `[ left_child(if not nil), right_child(if not nil) ]` |
+
+
+*Symbols:
+  - ⚠️ tested: ok
+  - ✕ tested: fails
+  - ⚠️ Is not done
+
+
+### Tree::FakeQueue
+
+This is an emulate queue, is fake because in the back is working with an array: @data
+#### Methods
+
+The following table has the methods you will need to implement along with their associated specs, as outlined in the project instructions.
+
+| Method | Spec File | Spec* | Notes |
+| --- | --- | ---|--- |
+| `Tree::FakeQueue.new` | spec/lib/tree/fake_queue_spec.rb | ⚠️ | parameters: fist_data |
+| `Tree::FakeQueue#add` | spec/lib/tree/fake_queue_spec.rb | ⚠️ | parameters: value (mandatory)<br><br> push value to @data<br> returns @data |
+| `Tree::FakeQueue#remove` | spec/lib/tree/fake_queue_spec.rb | ⚠️ | removes the value at index 0 of @data<br><br> returns nil if @data is empty<br> returns removed value|
+| `Tree::FakeQueue#empty?` | spec/lib/tree/fake_queue_spec.rb | ⚠️ | returns @data.empty? |
+| `Tree::FakeQueue#size` | spec/lib/tree/fake_queue_spec.rb | ⚠️ | returns @data.size |
 
 
 *Symbols:
   - ✓ tested: ok
-  - ✕ tested: fails
+  - ✕ tested:  fails
   - ⚠️ Is not done
