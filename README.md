@@ -17,11 +17,13 @@ The following table has the methods you will need to implement along with their 
 | `Tree::BST.new` | spec/lib/tree/bst_spec.rb | ✓ | parameters: arr (mandatory) |
 | `Tree::BST#build_tree` | spec/lib/tree/bst_spec.rb | ✓ | returns nil if @sorted_arr is empty<br> build the tree, and returns the root node |
 | `Tree::BST#find` | spec/lib/tree/bst_spec.rb | ✓ | parameters: value (mandatory)<br><br> returns nil if the root node is nil<br> returns nil if value is not found<br> returns the node with the value at data field |
+| `Tree::BST#delete` | spec/lib/tree/bst_spec.rb | ✓ | parameters: value (mandatory)<br><br> returns nil if value is not found<br> deletes the node with value at data, and returns deleted node |
+| `Tree::BST#insert` | spec/lib/tree/bst_spec.rb | ✓ | parameters: value (mandatory)<br><br> returns nil if the root is nil<br> returns nil if value already exists in the tree<br> adds a node with value at data, at the tree, and returns inserted node |
 
 
 *Symbols:
-  - ✓ runs ok
-  - ✕ It fails
+  - ✓ tested: ok
+  - ✕ tested:  fails
   - ⚠️ Is not done
 
 
@@ -45,6 +47,6 @@ The following table has the methods you will need to implement along with their 
 
 
 *Symbols:
-  - ✓ runs ok
-  - ✕ It fails
+  - ✓ tested: ok
+  - ✕ tested: fails
   - ⚠️ Is not done
