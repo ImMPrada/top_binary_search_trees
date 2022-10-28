@@ -8,8 +8,8 @@ The following table has the methods you will need to implement along with their 
 
 | Method | Spec File | Spec | Notes |
 | --- | --- | ---|--- |
-| `Tree::Node.new` | lib/tree/node.rb | Done| parameters: data (mandatory),<br> left_child, right_child |
-| `Enumerable#my_each_with_index` | spec/my_each_with_index_spec.rb | Done                                 |                                |
+| `Tree::Node.new` | lib/tree/node.rb | Done| parameters: data (mandatory), left_child, right_child |
+| `Tree::Nod#children_case` | lib/tree/node.rb | Done| this will return children case for node: `:no_child`, `:one_child` or `:two_children` |
 | `Enumerable#my_select`          | spec/my_select_spec.rb          | Done                                 |                                |
 | `Enumerable#my_all?`            | spec/my_all_spec.rb             | Done                                 |                                |
 | `Enumerable#my_any?`            | spec/my_any_spec.rb             | Done                                 |                                |
